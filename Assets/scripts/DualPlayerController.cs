@@ -2,42 +2,42 @@ using UnityEngine;
 
 public class DualPlayerController : MonoBehaviour
 {
-    public enum PlayerType { Knight, Fairy }
-    public PlayerType playerType;
-
-    public float moveSpeed = 5f;
-    public float jumpForce = 10f;
+    public float speed = 5f;
+    public float jumpForce = 7f;
+    public float jumpCooldown = 0.5f;
     
     private Rigidbody2D rb;
-    private KeyCode leftKey;
-    private KeyCode rightKey;
-    private KeyCode jumpKey;
+    private float nextJumpTime = 0f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        
-        if (playerType == PlayerType.Knight) {
-            leftKey = KeyCode.A;
-            rightKey = KeyCode.D;
-            jumpKey = KeyCode.W;
-        } else {
-            leftKey = KeyCode.LeftArrow;
-            rightKey = KeyCode.RightArrow;
-            jumpKey = KeyCode.UpArrow;
-        }
     }
 
     void Update()
     {
-        float moveInput = 0f;
-        if (Input.GetKey(leftKey)) moveInput = -1f;
-        if (Input.GetKey(rightKey)) moveInput = 1f;
+        float moveX = 0f;
+        bool jumpPressed = false;
 
-        rb.velocity = new Vector2(moveInput * moveSpeed, rb.velocity.y);
+        if (gameObject.name == "Knight")
+        {
+            if (Input.GetKey(KeyCode.A)) moveX = -1f;
+            if (Input.GetKey(KeyCode.D)) moveX = 1f;
+            if (Input.GetKeyDown(KeyCode.W)) jumpPressed = true;
+        }
+        else if (gameObject.name == "Fairy")
+        {
+            if (Input.GetKey(KeyCode.LeftArrow)) moveX = -1f;
+            if (Input.GetKey(KeyCode.RightArrow)) moveX = 1f;
+            if (Input.GetKeyDown(KeyCode.UpArrow)) jumpPressed = true;
+        }
 
-        if (Input.GetKeyDown(jumpKey)) {
-            rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        rb.velocity = new Vector2(moveX * speed, rb.velocity.y);
+
+        if (jumpPressed && Time.time >= nextJumpTime)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            nextJumpTime = Time.time + jumpCooldown;
         }
     }
 }
