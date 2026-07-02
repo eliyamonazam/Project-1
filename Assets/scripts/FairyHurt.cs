@@ -22,7 +22,7 @@ public class FairyHurt : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if ((other.gameObject.name == "1Spikes" || other.gameObject.name == "2Spikes" || other.gameObject.name == "3Spikes" || other.gameObject.name == "4Spikes") && other.GetComponent<SpriteRenderer>().color == Color.red && !isHurt)
+        if (other.gameObject.name == "Spikes" && other.GetComponent<SpriteRenderer>().color == Color.red && !isHurt)
         {
             isHurt = true;
             StartCoroutine(ResetPlayersPath());
