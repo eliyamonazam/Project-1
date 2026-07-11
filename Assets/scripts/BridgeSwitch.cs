@@ -3,23 +3,25 @@ using UnityEngine;
 public class BridgeSwitch : MonoBehaviour
 {
     public Transform bridge;
-    public Vector3 targetBridgePosition;
     public float speed = 5f;
     
-    
-    public GameObject waterUnderBridge; 
+    public Collider2D waterUnderBridgeCollider; 
     
     private bool isActivated = false;
 
     void Update()
     {
-        if (isActivated && bridge != null)
+        if (isActivated && bridge != null && waterUnderBridgeCollider != null)
         {
-            bridge.position = Vector3.MoveTowards(bridge.position, targetBridgePosition, speed * Time.deltaTime);
+            bridge.position = Vector3.MoveTowards(
+                bridge.position, 
+                waterUnderBridgeCollider.transform.position, 
+                speed * Time.deltaTime
+            );
             
-            if (waterUnderBridge != null)
+            if (waterUnderBridgeCollider.enabled)
             {
-                waterUnderBridge.SetActive(false);
+                waterUnderBridgeCollider.enabled = false;
             }
         }
     }

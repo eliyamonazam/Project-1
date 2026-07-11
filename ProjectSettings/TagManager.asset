@@ -53,6 +53,15 @@ TagManager:
   - name: door
     uniqueID: 4060280983
     locked: 0
+  - name: water
+    uniqueID: 3524631341
+    locked: 0
+  - name: around water
+    uniqueID: 2050820431
+    locked: 0
+  - name: bridge
+    uniqueID: 1747837389
+    locked: 0
   - name: player
     uniqueID: 3399063623
     locked: 0
