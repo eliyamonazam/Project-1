@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - maze
+  - Fairy
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -40,4 +43,28 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: ground
+    uniqueID: 2663691401
+    locked: 0
+  - name: 'top of ground '
+    uniqueID: 1429682817
+    locked: 0
+  - name: maze
+    uniqueID: 631980717
+    locked: 0
+  - name: wall
+    uniqueID: 3492601817
+    locked: 0
+  - name: water
+    uniqueID: 2971288949
+    locked: 0
+  - name: top of water
+    uniqueID: 692690733
+    locked: 0
+  - name: bridge
+    uniqueID: 620114887
+    locked: 0
+  - name: player
+    uniqueID: 3207347279
     locked: 0
