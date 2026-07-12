@@ -34,6 +34,7 @@ public class Health: MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        Debug.Log("i got damage!");
         currentHealth -= damage;
         slider.value = currentHealth;
 

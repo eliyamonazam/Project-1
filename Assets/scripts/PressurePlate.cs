@@ -2,50 +2,70 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    public SpikeTrap[] targetSpikes; // تغییر به آرایه برای گرفتن چندین تیغ
-    public float slowInterval = 2.0f;
+    public SpikeTrap[] targetSpikes; 
     
-    private float originalInterval;
+    [Header("تنظیمات پله شوالیه")]
+    public bool isKnightPlate = true;
+    public float slowOffInterval = 1.5f;     // زمان کند (وقتی شوالیه روی پله است)
+    public float normalOffInterval = 0.2f;   // زمان سریع (وقتی شوالیه از پله می‌رود)
+    
+    [Header("تنظیمات پله پری")]
+    public bool isFairyPlate = false;   
+
     private Vector3 originalScale;
     private bool isPressed = false;
 
     void Start()
     {
-        if (targetSpikes.Length > 0 && targetSpikes[0] != null)
-            originalInterval = targetSpikes[0].toggleInterval;
-            
         originalScale = transform.localScale;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        // چک کردن کاراکتر نایت و موقعیت ایستادن
-        if (collision.gameObject.name == "Knight" && !isPressed && collision.transform.position.y > transform.position.y)
+        if (isPressed) return;
+
+        // استفاده از نام رشته‌ای دقیق آبجکت به جای تگ
+        if (isKnightPlate && other.gameObject.name == "Knight")
         {
             isPressed = true;
-            updSpikes(slowInterval);
+            UpdateSpikesOffInterval(slowOffInterval);
             GetComponent<SpriteRenderer>().color = Color.green;
+            transform.localScale = new Vector3(originalScale.x, 0.1f, originalScale.z);
+        }
+        else if (isFairyPlate && other.gameObject.name == "Fairy")
+        {
+            isPressed = true;
+            PermanentlyDisableSpikes();
+            GetComponent<SpriteRenderer>().color = Color.blue; 
             transform.localScale = new Vector3(originalScale.x, 0.1f, originalScale.z);
         }
     }
 
-    void OnCollisionExit2D(Collision2D collision)
+    void OnTriggerExit2D(Collider2D other)
     {
-        if (collision.gameObject.name == "Knight" && isPressed)
+        // تشخیص خروج شوالیه با استفاده از نام آبجکت
+        if (isKnightPlate && other.gameObject.name == "Knight" && isPressed)
         {
             isPressed = false;
-            updSpikes(originalInterval);
+            UpdateSpikesOffInterval(normalOffInterval);
             GetComponent<SpriteRenderer>().color = Color.white;
             transform.localScale = originalScale;
         }
     }
 
-    // تابع مینیمال برای آپدیت هم‌زمان تمام تیغ‌های متصل شده
-    void updSpikes(float val)
+    void UpdateSpikesOffInterval(float val)
     {
         foreach (var s in targetSpikes) 
         {
-            if (s != null) s.SlowDownSpikes(val);
+            if (s != null) s.SetOffInterval(val);
+        }
+    }
+
+    void PermanentlyDisableSpikes()
+    {
+        foreach (var s in targetSpikes) 
+        {
+            if (s != null) s.DeactivatePermanently();
         }
     }
 }
