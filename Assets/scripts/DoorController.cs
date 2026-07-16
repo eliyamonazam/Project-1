@@ -9,7 +9,7 @@ public class DoorController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Fairy"))
+        if (collision.CompareTag("Player"))
         {
             doorRenderer.sprite = openSprite;
             solidCollider.enabled = false;
@@ -18,7 +18,7 @@ public class DoorController : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Fairy"))
+        if (collision.CompareTag("Player"))
         {
             doorRenderer.sprite = closedSprite;
             solidCollider.enabled = true;
