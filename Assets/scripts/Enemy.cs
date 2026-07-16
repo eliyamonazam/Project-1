@@ -8,8 +8,8 @@ public class Enemy : MonoBehaviour
     
     [SerializeField]  float moveSpeed = 2f;
     Rigidbody2D r;
-    public Health health;
-    public Transform target;
+    Health health;
+    Transform target;
     Vector2 moveDirection;
     [SerializeField] float detectRange = 5f;
     Animator animator;
@@ -81,7 +81,6 @@ public class Enemy : MonoBehaviour
 
                 if(Time.time >= nextAttackTime)
                 {
-                    Debug.Log("Attacked!");
                     animator.SetTrigger("Attack");
                     nextAttackTime = Time.time + 1f / attackRate;
                    
@@ -134,9 +133,13 @@ public class Enemy : MonoBehaviour
 
     public void DealDamage()
     {
+
+        Debug.Log(gameObject.name + " DealDmage");
         Collider2D[] players = Physics2D.OverlapCircleAll(attackPoint.position , attackRange , playerLayers);
+        Debug.Log(players.Length);
         foreach(Collider2D player in players)
         {
+            Debug.Log("Hit : " + player.name);
             Health health = player.GetComponent<Health>();
 
             if(health != null)
@@ -144,6 +147,7 @@ public class Enemy : MonoBehaviour
                 health.TakeDamage(attackDamage);
             }
         }
+        
     }
 
     void OnDrawGizmosSelected()
