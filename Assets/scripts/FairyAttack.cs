@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class FairyAttack : MonoBehaviour
 {
-    
     public Animator animator;
     public Transform firePoint;
     public GameObject projecTile;
     Vector2 attackDirection;
     public float fireRate = 1f;
+    
     float nextFireTime = 0;
+    private int bonusDamage = 0; 
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && Time.time >= nextFireTime) 
@@ -36,11 +36,16 @@ public class FairyAttack : MonoBehaviour
     {
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos.z = 0;
-
         firePoint.localPosition = attackDirection * 0.5f;
 
         GameObject obj = Instantiate(projecTile , firePoint.position , Quaternion.identity);
+        MagicRange magic = obj.GetComponent<MagicRange>();
+        
+        magic.SetDirection(attackDirection); 
+        magic.AddBonusDamage(bonusDamage); 
 
-        obj.GetComponent<MagicRange>().SetDirection(attackDirection); 
+        bonusDamage = 0; 
     }
+
+    public void BoostDamage(int amount) => bonusDamage += amount;
 }

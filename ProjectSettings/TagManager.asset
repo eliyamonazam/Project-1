@@ -14,8 +14,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Player
+  - Enemy
   - 
   - 
   - 
@@ -50,11 +50,17 @@ TagManager:
   - name: 'top of ground '
     uniqueID: 1429682817
     locked: 0
+  - name: decor
+    uniqueID: 849543711
+    locked: 0
   - name: maze
     uniqueID: 631980717
     locked: 0
   - name: wall
     uniqueID: 3492601817
+    locked: 0
+  - name: door
+    uniqueID: 309825311
     locked: 0
   - name: water
     uniqueID: 2971288949

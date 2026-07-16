@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class Health: MonoBehaviour
 {
-
     public Slider slider;
     public Gradient gradient;
     public Image Fill;
@@ -15,10 +14,8 @@ public class Health: MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     
-
     void Start()
     {
-        
         currentHealth = maxHealth;
         slider.maxValue = maxHealth;
         slider.value = currentHealth;
@@ -27,10 +24,7 @@ public class Health: MonoBehaviour
         {
            Fill.color = gradient.Evaluate(1f);
         }
-        
     }
-
-
 
     public void TakeDamage(int damage)
     {
@@ -49,12 +43,22 @@ public class Health: MonoBehaviour
         {
             Fill.color = gradient.Evaluate(slider.normalizedValue);
         }
+    }
 
+    public void Heal(int amount)
+    {
+        currentHealth = Mathf.Min(currentHealth + amount, maxHealth);
+        
+        slider.value = currentHealth;
+
+        if(Fill != null)
+        {
+            Fill.color = gradient.Evaluate(slider.normalizedValue);
+        }
     }
 
     public void Die()
     {
         Destroy(gameObject);
     }
-
 }
