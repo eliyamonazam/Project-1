@@ -630,7 +630,7 @@ GameObject:
   - component: {fileID: 144831579}
   - component: {fileID: 144831578}
   - component: {fileID: 144831577}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Slime1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -790,7 +790,7 @@ MonoBehaviour:
   attackPoint: {fileID: 1767807156}
   playerLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 320
   attackDamage: 15
 --- !u!50 &144831579
 Rigidbody2D:
@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 155940280}
   - component: {fileID: 155940279}
   - component: {fileID: 155940278}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Vampires3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1004,7 +1004,7 @@ MonoBehaviour:
   attackPoint: {fileID: 134520794}
   playerLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 320
   attackDamage: 40
 --- !u!50 &155940280
 Rigidbody2D:
@@ -1404,7 +1404,7 @@ GameObject:
   - component: {fileID: 458789700}
   - component: {fileID: 458789699}
   - component: {fileID: 458789698}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Vampires2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1519,7 +1519,7 @@ MonoBehaviour:
   attackPoint: {fileID: 1433607272}
   playerLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 320
   attackDamage: 25
 --- !u!114 &458789699
 MonoBehaviour:
@@ -1637,7 +1637,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0.6152649, y: 0.6078491}
   m_SizeDelta: {x: 0.69262695, y: -3.8099976}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2028,7 +2028,7 @@ MonoBehaviour:
   attackRange: 1
   enemyLayers:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 128
   attackDmg: 20
   attackRate: 2
 --- !u!114 &522346707
@@ -3139,7 +3139,7 @@ GameObject:
   - component: {fileID: 1099219065}
   - component: {fileID: 1099219068}
   - component: {fileID: 1099219067}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Slime2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -3336,7 +3336,7 @@ MonoBehaviour:
   attackPoint: {fileID: 1801611383}
   playerLayers:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 320
   attackDamage: 20
 --- !u!1 &1114739972
 GameObject:
@@ -4412,13 +4412,13 @@ GameObject:
   - component: {fileID: 1490577237}
   - component: {fileID: 1490577236}
   - component: {fileID: 1490577242}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Vampires1
   m_TagString: Enemy
   m_Icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!50 &1490577236
 Rigidbody2D:
   serializedVersion: 4
