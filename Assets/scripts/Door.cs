@@ -5,8 +5,14 @@ public class Door : MonoBehaviour
 {
     public GameObject closedStateObject; 
     public GameObject openStateObject; 
-    public string sceneName; 
-    public bool isFinalDoor; // برای در چهارم این تیک را در Inspector بزن
+    public string sceneName;
+
+    [Header("تنظیمات نوع در")]
+    [Tooltip("اگر این در بازیکن را به سین اصلی برمی‌گرداند، این تیک را بزنید")]
+    public bool isReturnDoor; 
+
+    [Tooltip("اگر این در نهایی درون مرحله است و فقط باید مسیر را در همین صحنه باز کند، این تیک را بزنید")]
+    public bool isFinalDoor; 
 
     void Start()
     {
@@ -20,11 +26,32 @@ public class Door : MonoBehaviour
         
         if (n == "Knight" || n == "Fairy") 
         {
-            // اگر در چهارم است و هنوز ۳ ستاره جمع نشده، اجازه ورود نده
-            if (isFinalDoor && !GameManager.Instance.AllStarsCollected()) 
+            if (isReturnDoor)
             {
-                Debug.Log("Locked!");
-                return; 
+                closedStateObject.SetActive(false);
+                openStateObject.SetActive(true);
+
+                GameManager.Instance.SaveCurrentMissionStars();
+                
+                GameManager.Instance.ResetStars();
+
+                SceneManager.LoadScene(sceneName);
+                return;
+            }
+
+            if (isFinalDoor) 
+            {
+                if (!GameManager.Instance.AllStarsCollected()) 
+                {
+                    Debug.Log("Locked! هنوز ۳ ستاره این بخش را جمع نکرده‌اید.");
+                    return; 
+                }
+
+                closedStateObject.SetActive(false);
+                openStateObject.SetActive(true);
+                
+                GameManager.Instance.ResetStars();
+                return;
             }
 
             closedStateObject.SetActive(false);
