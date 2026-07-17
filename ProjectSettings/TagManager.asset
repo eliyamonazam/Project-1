@@ -68,6 +68,9 @@ TagManager:
   - name: top of water
     uniqueID: 692690733
     locked: 0
+  - name: key
+    uniqueID: 44921257
+    locked: 0
   - name: bridge
     uniqueID: 620114887
     locked: 0
