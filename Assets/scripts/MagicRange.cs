@@ -18,7 +18,6 @@ public class MagicRange : MonoBehaviour
     public void SetDirection(Vector2 dir)
     {
         direction = dir;
-        Debug.Log("Direction" + direction);
     }
 
     // Update is called once per frame

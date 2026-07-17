@@ -23,7 +23,10 @@ public class Display : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
-        
+        if(Player1 == null || Player2 == null)
+        {
+            return;
+        }
        Vector3 center = (Player1.position + Player2.position) / 2f;
 
        Vector3 target = new Vector3(center.x , center.y, -10f);
