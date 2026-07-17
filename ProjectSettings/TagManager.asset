@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - maze
+  - Fairy
   - Enemy
   layers:
   - Default
@@ -12,9 +14,9 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
   - Enemy
   - 
-  - Player
   - 
   - 
   - 
@@ -41,4 +43,34 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: ground
+    uniqueID: 2663691401
+    locked: 0
+  - name: 'top of ground '
+    uniqueID: 1429682817
+    locked: 0
+  - name: decor
+    uniqueID: 849543711
+    locked: 0
+  - name: maze
+    uniqueID: 631980717
+    locked: 0
+  - name: wall
+    uniqueID: 3492601817
+    locked: 0
+  - name: door
+    uniqueID: 309825311
+    locked: 0
+  - name: water
+    uniqueID: 2971288949
+    locked: 0
+  - name: top of water
+    uniqueID: 692690733
+    locked: 0
+  - name: bridge
+    uniqueID: 620114887
+    locked: 0
+  - name: player
+    uniqueID: 3207347279
     locked: 0

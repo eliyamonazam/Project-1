@@ -37,4 +37,8 @@ public class MagicRange : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void AddBonusDamage(int amount)
+{
+    damg += amount; 
+}
 }
