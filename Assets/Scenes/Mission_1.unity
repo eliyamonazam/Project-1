@@ -10343,6 +10343,7 @@ GameObject:
   - component: {fileID: 1562635824}
   - component: {fileID: 1562635823}
   - component: {fileID: 1562635822}
+  - component: {fileID: 1562635825}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -10443,6 +10444,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1562635825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1562635821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e6e339555d92ad4d9a2723ab84fbdfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closedStateObject: {fileID: 0}
+  openStateObject: {fileID: 0}
+  sceneName: sara's wef
+  isReturnDoor: 1
+  isFinalDoor: 0
 --- !u!1001 &1629902660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37241,3 +37259,23 @@ PrefabInstance:
     m_RemovedComponents: []
     m_AddedGameObjects: []
   m_SourcePrefab: {fileID: 100100000, guid: 7306c500ac6eaad41aa2fe00ab33814c, type: 3}
+--- !u!1 &8643707245134017539 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4585927590483564283, guid: 7306c500ac6eaad41aa2fe00ab33814c, type: 3}
+  m_PrefabInstance: {fileID: 8643707245134017538}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8643707245134017540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8643707245134017539}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05dbadf1c2abafb46891c3556dedce6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starID: 1
+  finishesMission: 0
+  mainSceneName: sara's wef
