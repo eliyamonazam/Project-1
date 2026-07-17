@@ -66,6 +66,13 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(gameObject.tag == "Boss")
+        {
+            if(health.currentHealth == 500 || health.currentHealth == 1000 || health.currentHealth == 1500)
+            {
+                animator.SetTrigger("Stomp");
+            }
+        }
        if(target != null && target.gameObject.activeInHierarchy){
        timer += Time.deltaTime;
 
@@ -86,6 +93,7 @@ public class Enemy : MonoBehaviour
                 if(Time.time >= nextAttackTime)
                 {
                     animator.SetTrigger("Attack");
+                    animator.SetTrigger("Swipe");
                     nextAttackTime = Time.time + 1f / attackRate;
                    
                 }

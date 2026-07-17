@@ -50,6 +50,12 @@ public class Health: MonoBehaviour
            return;
         }
 
+
+        if(gameObject.tag == "Boss")
+        {
+            StartCoroutine(HurtFlush());
+        }
+
        
         if(Fill != null)
         {
