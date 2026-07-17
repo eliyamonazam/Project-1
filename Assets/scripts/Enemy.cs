@@ -40,6 +40,10 @@ public class Enemy : MonoBehaviour
 
         foreach(GameObject p in player)
         {
+            if (!p.activeInHierarchy)
+            {
+                continue;
+            }
             float distance = Vector2.Distance(transform.position , p.transform.position);
 
             if(distance < closestDistance)
@@ -62,7 +66,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       if(target != null && target.gameObject.activeInHierarchy){
        timer += Time.deltaTime;
 
        if(timer >= targetUpdateTime)
@@ -96,6 +100,7 @@ public class Enemy : MonoBehaviour
                 animator.SetFloat("LastX" , moveDirection.x);
                 animator.SetFloat("LastY" , moveDirection.y);
             }
+        }
             else{
                 
                 moveDirection = Vector2.zero;
@@ -119,32 +124,21 @@ public class Enemy : MonoBehaviour
 
         animator.SetTrigger("Hurt");
 
-        if(health.currentHealth <= 0)
-        {
-            Die();
-        }
     }
 
-    public void Die()
-    {
-        animator.SetBool("isDied" , true);
-        Destroy(gameObject);
-    }
-
+   
     public void DealDamage()
     {
-
-        Debug.Log(gameObject.name + " DealDmage");
         Collider2D[] players = Physics2D.OverlapCircleAll(attackPoint.position , attackRange , playerLayers);
         Debug.Log(players.Length);
         foreach(Collider2D player in players)
         {
-            Debug.Log("Hit : " + player.name);
             Health health = player.GetComponent<Health>();
 
             if(health != null)
             {
                 health.TakeDamage(attackDamage);
+            
             }
         }
         
